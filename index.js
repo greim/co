@@ -155,10 +155,11 @@ function objectToThunk(obj){
     var keys = Object.keys(obj);
     var pending = keys.length;
     var results = new obj.constructor();
-    keys.forEach(function(key){
-      results[key] = undefined; // set order from original
-    });
     var finished;
+
+    for (var i = 0; i < keys.length; i++) {
+      results[keys[i]] = undefined; // set order from original
+    }
 
     if (!pending) {
       setImmediate(function(){
