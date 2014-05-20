@@ -157,8 +157,10 @@ function objectToThunk(obj){
     var results = new obj.constructor();
     var finished;
 
-    for (var i = 0; i < keys.length; i++) {
-      results[keys[i]] = undefined; // set order from original
+    if (!Array.isArray(results)){
+      for (var i = 0; i < keys.length; i++) {
+        results[keys[i]] = undefined; // set order from original
+      }
     }
 
     if (!pending) {
